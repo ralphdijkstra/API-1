@@ -1,0 +1,9 @@
+API is testversie
+
+zip uitpakken in een publieke map van wamp of xampp
+voor gebruik zie "API endpoints" 
+
+in httpd.conf mag er geen hekje staan voor:
+LoadModule rewrite_module modules/mod_rewrite.so
+als je dit wijzigt moet je apache herstarten
+
