@@ -57,7 +57,7 @@
 		const response = await axios.get(apiScripts)
 		const json = await response.data
 		let tabelInhoud = ''
-		json.map(el => tabelInhoud += `<tr><td>${el.naam}</td><td>${el.bestand}</td><td>${el.hoofdstuk_id}</td><td>${hoofdstukken[el.hoofdstuk_id]}</td></tr>`)
+		json.map(el => tabelInhoud += `<tr><td>${el.naam}</td><td>${el.bestand}</td><td>${el.hoofdstuk_id} ${hoofdstukken[el.hoofdstuk_id]}</td></tr>`)
 		document.querySelector("#tabelInhoud").innerHTML = tabelInhoud
 
 	}
