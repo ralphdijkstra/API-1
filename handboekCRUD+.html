@@ -1,0 +1,103 @@
+<!DOCTYPE html>                                      
+<html lang="nl"> 
+<head> 
+	<title>Handboek CRUD+</title> 
+	<meta charset="utf-8" /> 
+	<style>
+        div, footer, form {margin-top: 20px;}
+        input, select {margin-top: 5px; width: 40%; padding: 2px;}
+		body  {width : 80%; max-width:600px; margin: auto; margin-top:50px;}
+		th,td {text-align : left; padding-right:10px;}
+		div {width : 100%;}
+		label {width: 20%;display: inline-block;}
+		td:last-child {color : red; cursor: pointer;}
+	</style>	
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+</head> 
+<body onload="laad()"> 
+    <h1>Handboek CRUD &plus;</h1>  
+	<div>
+		<label>hoofdstuk:</label><select id="hoofdstuk" onclick="laadHoofdstukScripts()" ></select>
+	</div>
+	<br/>
+	<table><tr><th>Naam</th><th>File</th></tr>
+		<tbody id="tabelInhoud"/>
+	</table>
+
+	<div>
+		<label>naam:</label><input type="text" id="naam" required/><br/>
+		<label>file:</label><input type="text" id="bestand" /><br/>
+		<button onclick="voegToe()" type="button">Toevoegen</button>
+	</div>
+</body>
+
+	<script>												
+		"use strict"
+        const apiBasis = "http://127.0.0.1:8000/api/"
+        const apiScripts = apiBasis + "scripts/"
+        const apiHoofdstukken = apiBasis + "hoofdstukken/"
+		
+		let hoofdstukken = []
+		let json = null
+
+		const laadHoofdstukken = async () => {                           
+            const response = await axios.get(apiHoofdstukken)
+            const json = await response.data
+			let nieuweInhoud = ''
+			json.map(el => {
+				hoofdstukken[el.id] = el.naam 
+				nieuweInhoud += `<option value="${el.id}">${el.naam}</option>`
+			})
+			document.querySelector("#hoofdstuk").innerHTML = nieuweInhoud
+			console.log(hoofdstukken)
+		}
+		
+//		const laadWerknemers = async () => {  
+//			console.log('Laad gegevens')
+//            const response = await axios.get(apiWerknemers)
+//            json = await response.data
+//		}
+
+		const laadHoofdstukScripts = async () => {  
+			const hoofdstuk  = document.querySelector("#hoofdstuk").value
+			console.log('selecteer Hoofdstuk ', hoofdstuk)
+			const apiHoofdstukkenScripts = `${apiHoofdstukken}${hoofdstuk}/scripts?sort=naam`
+            const response = await axios.get(apiHoofdstukkenScripts)
+            json = await response.data
+			toon()
+		}
+
+		const toon = () => {    
+			let tabelInhoud = ''
+			json.map(el => tabelInhoud += `<tr><td>${el.naam}</td><td>${el.bestand}</td>
+								<td>${hoofdstukken[el.hoofdstuk_id]}</td><td onclick="verwijder(${el.id})"> x </td></tr>`) 
+			document.querySelector("#tabelInhoud").innerHTML = tabelInhoud
+		}
+
+		const laad = async () => {
+			await laadHoofdstukken()
+			await laadHoofdstukScripts()
+			toon()
+		}
+
+		const voegToe = async () => {
+			const naam     = document.querySelector("#naam").value
+			const bestand = document.querySelector("#bestand").value
+			const hoofdstuk  = document.querySelector("#hoofdstuk").value
+			const jsonstring = {"naam":naam, "bestand":bestand, "hoofdstuk_id":hoofdstuk}
+			console.log("voeg toe: ",jsonstring)
+			const respons = await axios.post(apiScripts, jsonstring, {headers: {'Content-Type': 'application/json'}})
+			console.log('status code', respons.status)
+			document.querySelector("#naam").value = ''
+			document.querySelector("#bestand").value = ''
+			await laad()
+		}		
+
+		const verwijder = async (id) => {
+			console.log("verwijder: ",id)
+			const respons = await axios.delete(apiScripts+id)
+			console.log('status code', respons.status)
+			await laad()
+		}		
+	</script>	
+</html>

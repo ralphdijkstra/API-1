@@ -84,4 +84,15 @@ class ScriptController extends Controller
     {
         $script->delete();
     }
+    public function indexHoofdstuk(Request $request, $id)
+    {
+        if ($request->has('sort')) {
+            return Script::where('hoofdstuk_id',$id)->orderBy($request->sort)->get();
+        }
+        return Script::where('hoofdstuk_id',$id)->get();
+    }
+    public function destroyHoofdstuk($id)
+    {
+        Script::where('hoofdstuk_id', $id)->delete();
+    }
 }

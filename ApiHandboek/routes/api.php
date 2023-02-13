@@ -25,3 +25,6 @@ Route::apiResource('scripts', ScriptController::class);
 Route::apiResource('hoofdstukken', HoofdstukController::class)
 ->parameters(['hoofdstukken' => 'hoofdstuk'])
 ->only(['index', 'show']);
+
+Route::get('hoofdstukken/{id}/scripts', [ScriptController::class, 'indexHoofdstuk']);
+Route::delete('hoofdstukken/{id}/scripts', [ScriptController::class, 'destroyHoofdstuk']);

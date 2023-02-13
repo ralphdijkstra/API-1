@@ -1,0 +1,108 @@
+<!DOCTYPE html>                                      
+<html lang="nl"> 
+<head> 
+	<title> Personeel CRUD+</title> 
+	<meta charset="utf-8" /> 
+	<style>
+        div, footer, form {margin-top: 20px;}
+        input, select {margin-top: 5px; width: 40%; padding: 2px;}
+		body  {width : 80%; max-width:600px; margin: auto; margin-top:50px;}
+		th,td {text-align : left; padding-right:10px;}
+		div {width : 100%;}
+		label {width: 20%;display: inline-block;}
+		td:last-child {color : red; cursor: pointer;}
+	</style>	
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+</head> 
+<body onload="laad()"> 
+    <h1>Personeel CRUD &plus;</h1>  
+	<div>
+		<label>functie:</label><select id="functie" onclick="laadFunctieWerknemers()" ></select>
+	</div>
+	<br/>
+	<table><tr><th>Werknemer</th><th>Telefoon</th><th>Email</th><th>Functie</th></tr>
+		<tbody id="tabelInhoud"/>
+	</table>
+
+	<div>
+		<label>naam:</label><input type="text" id="naam" required/><br/>
+		<label>telefoon:</label><input type="text" id="telefoon" /><br/>
+		<label>email:</label><input type="email" id="email" />
+		<button onclick="voegToe()" type="button">Toevoegen</button>
+	</div>
+
+	<footer>&copy; 2021 AMJE</footer> 
+</body>
+
+	<script>												
+		"use strict"
+        const apiBasis = "http://127.0.0.1:8000/api/"
+        const apiWerknemers = apiBasis + "werknemers/"
+        const apiFuncties = apiBasis + "functies/"
+		
+		let functies = []
+		let json = null
+
+		const laadFuncties = async () => {                           
+            const response = await axios.get(apiFuncties)
+            const json = await response.data
+			let nieuweInhoud = ''
+			json.map(el => {
+				functies[el.id] = el.naam 
+				nieuweInhoud += `<option value="${el.id}">${el.naam}</option>`
+			})
+			document.querySelector("#functie").innerHTML = nieuweInhoud
+			console.log(functies)
+		}
+		
+//		const laadWerknemers = async () => {  
+//			console.log('Laad gegevens')
+//            const response = await axios.get(apiWerknemers)
+//            json = await response.data
+//		}
+
+		const laadFunctieWerknemers = async () => {  
+			const functie  = document.querySelector("#functie").value
+			console.log('selecteer Functie ', functie)
+			const apiFunctiesWerknemers = `${apiFuncties}${functie}/werknemers?sort=naam`
+            const response = await axios.get(apiFunctiesWerknemers)
+            json = await response.data
+			toon()
+		}
+
+		const toon = () => {    
+			let tabelInhoud = ''
+			json.map(el => tabelInhoud += `<tr><td>${el.naam}</td><td>${el.telefoon}</td><td>${el.email}</td>
+								<td>${functies[el.functie_id]}</td><td onclick="verwijder(${el.id})"> x </td></tr>`) 
+			document.querySelector("#tabelInhoud").innerHTML = tabelInhoud
+		}
+
+		const laad = async () => {
+			await laadFuncties()
+			await laadFunctieWerknemers()
+			toon()
+		}
+
+		const voegToe = async () => {
+			const naam     = document.querySelector("#naam").value
+			const telefoon = document.querySelector("#telefoon").value
+			const email    = document.querySelector("#email").value
+			const functie  = document.querySelector("#functie").value
+			const jsonstring = {"naam":naam, "telefoon":telefoon, "email":email, "functie_id":functie}
+			console.log("voeg toe: ",jsonstring)
+			const respons = await axios.post(apiWerknemers, jsonstring, {headers: {'Content-Type': 'application/json'}})
+			console.log('status code', respons.status)
+			document.querySelector("#naam").value = ''
+			document.querySelector("#telefoon").value = ''
+			document.querySelector("#email").value = ''	
+			await laad()
+		}		
+
+		const verwijder = async (id) => {
+			console.log("verwijder: ",id)
+			const respons = await axios.delete(apiWerknemers+id)
+			console.log('status code', respons.status)
+			await laad()
+		}		
+	</script>	
+</html>
