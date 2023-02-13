@@ -28,11 +28,8 @@ class ScriptController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'hoofdstuk_id' => 'required',
-            'volgorde' => 'required|numeric',
             'naam' => 'required',
-            'bestand' => 'required|regex:/^[\w,\s-]+\.[A-Za-z]{3}$/',
-            'PHP-versie' => 'required'
-
+            // 'bestand' => 'required|regex:/^[\w,\s-]+\.[A-Za-z]{3}$/',
         ]);
 
         if ($validator->fails()) {

@@ -9,7 +9,7 @@ class Script extends Model
 {
     use HasFactory;
 
-    protected $fillable = ["hoofdstuk_id", "volgorde", "naam", "bestand", "PHP-versie"];
+    protected $fillable = ["hoofdstuk_id", "naam", "bestand"];
 
     public $timestamps = false;
 }
