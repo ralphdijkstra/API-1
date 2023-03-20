@@ -1,7 +1,0 @@
-	Options +FollowSymLinks -MultiViews
-	RewriteEngine On
-
-    RewriteRule ^hoofdstukken/?$ hoofdstukken.php [L]
-    RewriteRule ^scripts/?$ scripts.php [L]
-    RewriteRule ^scripts/(.*)$ scripts.php?id=$1 [L]
-    RewriteRule ^hoofdstukken/(.*)$ hoofdstukken.php?id=$1 [L]
