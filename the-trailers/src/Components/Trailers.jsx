@@ -1,14 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import { SelectedMovieContext } from "../Contexts/SelectedMovieContext";
 import axios from "axios";
-import { CheckIcon, PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
-import Modal from "./Modal";
+import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import YoutubeFrame from "./YoutubeFrame";
 
 export default function Trailers({ tab }) {
   const [trailers, setTrailers] = useState([]);
-  const [showEditForm, setShowEditForm] = useState(false);
-  const [selectedTrailer, setSelectedTrailer] = useState();
   const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
 
   useEffect(() => {
@@ -21,8 +18,13 @@ export default function Trailers({ tab }) {
     getTrailers();
   }, [selectedMovie, tab]);
 
-  const closeModal = () => {
-    setShowEditForm(false);
+  const deleteTrailer = async (selectedTrailer) => {
+    await axios.delete(
+      `http://127.0.0.1:8000/api/trailers/${selectedTrailer.id}`
+    );
+    setTrailers(
+      trailers.filter((trailer) => trailer.id !== selectedTrailer.id)
+    );
   };
 
   return (
@@ -34,17 +36,16 @@ export default function Trailers({ tab }) {
             <div className="flex items-center space-x-2">
               <p className="text-sm text-neutral-400">{trailer.url}</p>
               <button
-                onClick={() => {
-                  setShowEditForm(true);
-                  setSelectedTrailer(trailer);
-                }}
+                onClick={() => {}}
                 className="flex items-center rounded-sm bg-neutral-800 p-1 px-2 text-sm hover:bg-neutral-700"
               >
                 <PencilIcon className="mr-2 h-4 w-4" />
                 Edit
               </button>
               <button
-                onClick={() => {}}
+                onClick={() => {
+                  deleteTrailer(trailer);
+                }}
                 className="flex items-center rounded-sm bg-neutral-800 p-1 px-2 text-sm hover:bg-neutral-700"
               >
                 <TrashIcon className="mr-2 h-4 w-4" />
@@ -55,38 +56,6 @@ export default function Trailers({ tab }) {
           <YoutubeFrame trailer={trailer} />
         </div>
       ))}
-      {/* Edit Modal */}
-      {selectedTrailer != null && (
-        <Modal show={showEditForm}>
-          <div className="flex flex-col justify-between">
-            <div className="flex flex-col gap-2">
-              <YoutubeFrame trailer={selectedTrailer} />
-              <div className="grid grid-cols-[20%_75%] w-2/3 mx-auto">
-                Type trailer:
-                <input className="bg-transparent border-white border rounded-sm" type="text" defaultValue={selectedTrailer.type}></input>
-              </div>
-              <div className="grid grid-cols-[20%_70%_5%] w-2/3 mx-auto">
-                URL:
-                <input className="bg-transparent border-white border rounded-sm" type="text" defaultValue={selectedTrailer.url}></input>
-                <button className="bg-blue-500 flex justify-center items-center rouned-md"><CheckIcon className="w-5 h-5"/></button>
-              </div>
-            </div>
-            <div className="flex items-center justify-end space-x-3 p-3">
-              <button
-                onClick={() => {
-                  closeModal();
-                }}
-                className="rounded-md bg-red-500 py-2 px-3 hover:bg-red-600 "
-              >
-                Cancel
-              </button>
-              <button className="rounded-md bg-blue-500 py-2 px-3 hover:bg-blue-600 ">
-                Confirm
-              </button>
-            </div>
-          </div>
-        </Modal>
-      )}
     </>
   );
 }

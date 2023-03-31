@@ -29,7 +29,7 @@ export default function Properties() {
         <div className="flex items-center justify-between p-5 text-xl">
           <div>{selectedMovie.title}</div>
           <button
-            className="rounded-full p-1 hover:bg-black transition-all duration-100"
+            className="rounded-full p-1 hover:bg-neutral-800 transition-all duration-100"
             onClick={() => {
               setSelectedMovie(null);
             }}
