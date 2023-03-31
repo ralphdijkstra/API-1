@@ -4,14 +4,14 @@ import axios from "axios";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import YoutubeFrame from "./YoutubeFrame";
 
-export default function Trailers({ tab }) {
+export default function TrailerList({ tab }) {
   const [trailers, setTrailers] = useState([]);
   const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
 
   useEffect(() => {
     const getTrailers = async () => {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/trailers?movie=${selectedMovie.id}`
+        `http://127.0.0.1:8000/api/movies/${selectedMovie.id}/trailers`
       );
       setTrailers(response.data);
     };
@@ -30,7 +30,7 @@ export default function Trailers({ tab }) {
   return (
     <>
       {trailers.map((trailer) => (
-        <div className="flex flex-col gap-3 p-3" key={trailer.id}>
+        <div className="flex flex-col gap-3 px-3 py-1" key={trailer.id}>
           <div className="flex items-center justify-between">
             <p className="flex-1">{trailer.type}</p>
             <div className="flex items-center space-x-2">

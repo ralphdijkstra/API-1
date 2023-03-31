@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { SelectedMovieContext } from "../Contexts/SelectedMovieContext";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import TabButton from "./TabButton";
-import Trailers from "./Trailers";
+import TrailerList from "./TrailerList";
 
 export default function Properties() {
   const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
@@ -11,7 +11,7 @@ export default function Properties() {
   const selectedTab = () => {
     switch (tab) {
       case 0:
-        return <Trailers tab={tab} />;
+        return <TrailerList tab={tab} />;
       case 1:
         return "1";
       case 2:
@@ -27,7 +27,7 @@ export default function Properties() {
     <>
       <div className="sticky top-0 bg-neutral-900">
         <div className="flex items-center justify-between p-5 text-xl">
-          <div>{selectedMovie.title}</div>
+          <div>{selectedMovie.title} {selectedMovie.id}</div>
           <button
             className="rounded-full p-1 hover:bg-neutral-800 transition-all duration-100"
             onClick={() => {

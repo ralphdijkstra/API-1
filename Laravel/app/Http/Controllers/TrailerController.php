@@ -14,9 +14,6 @@ class TrailerController extends Controller
      */
     public function index(Request $request): Response
     {
-        if ($request->has('movie')) {
-            return response(Trailer::where('movie_id', $request->movie)->get());
-        }
         return response(Trailer::all());
     }
 

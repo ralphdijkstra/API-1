@@ -35,7 +35,7 @@ export default function Movies() {
               ))}
             </div>
           </div>
-          <div className="bg-neutral-900 text-white overflow-y-scroll h-screen scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-neutral-700">
+          <div className="bg-neutral-900 text-white overflow-y-auto h-screen scrollbar-thin scrollbar-thumb-neutral-700 scrollbar-track-neutral-800">
             {(selectedMovie != null) ? <Properties/> : null }
           </div>
         </div>
