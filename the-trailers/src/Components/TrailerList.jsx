@@ -30,7 +30,7 @@ export default function TrailerList({ tab }) {
   return (
     <>
       {trailers.map((trailer) => (
-        <div className="flex flex-col gap-3 px-3 py-1" key={trailer.id}>
+        <div className="flex flex-col gap-3 m-3 p-3 rounded" key={trailer.id}>
           <div className="flex items-center justify-between">
             <p className="flex-1">{trailer.type}</p>
             <div className="flex items-center space-x-2">

@@ -26,8 +26,8 @@ export default function Properties() {
   return (
     <>
       <div className="sticky top-0 bg-neutral-900">
-        <div className="flex items-center justify-between p-5 text-xl">
-          <div>{selectedMovie.title} {selectedMovie.id}</div>
+        <div className="flex items-center justify-between p-3 text-xl">
+          <div>{selectedMovie.title}</div>
           <button
             className="rounded-full p-1 hover:bg-neutral-800 transition-all duration-100"
             onClick={() => {
