@@ -27,12 +27,6 @@ class MovieController extends Controller
         return response($trailers);
     }
 
-    public function genres($id)
-    {
-        $movie = Movie::find($id);
-        return response($movie->genres);
-    }
-
     /**
      * Show the form for creating a new resource.
      */
