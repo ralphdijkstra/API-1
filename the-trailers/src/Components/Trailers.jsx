@@ -11,7 +11,7 @@ export default function Trailers({ tab }) {
   useEffect(() => {
     const getTrailers = async () => {
       const response = await axios.get(
-        `http://127.0.0.1:8000/api/trailers?movie=${selectedMovie.id}`
+        `http://185.228.81.212:8081/api/movies/${selectedMovie.id}/trailers`
       );
       setTrailers(response.data);
     };
@@ -20,7 +20,7 @@ export default function Trailers({ tab }) {
 
   const deleteTrailer = async (selectedTrailer) => {
     await axios.delete(
-      `http://127.0.0.1:8000/api/trailers/${selectedTrailer.id}`
+      `http://185.228.81.212:8081/api/trailers/${selectedTrailer.id}`
     );
     setTrailers(
       trailers.filter((trailer) => trailer.id !== selectedTrailer.id)

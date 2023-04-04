@@ -4,7 +4,7 @@ import Home from "./Pages/Home";
 import Movies from "./Pages/Movies";
 import { useEffect } from "react";
 
-function App() {
+export default function App() {
   useEffect(() => {
     document.body.style.overflow = "hidden";
   })
@@ -15,5 +15,3 @@ function App() {
     </Routes>
   );
 }
-
-export default App;

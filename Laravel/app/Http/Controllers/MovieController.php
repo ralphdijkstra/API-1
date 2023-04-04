@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Genre;
 use App\Models\Movie;
 use App\Models\MovieGenre;
+use App\Models\Trailer;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,16 +18,13 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->has('genre')) {
-            $movies = Movie::all();
-            $genres = collect([]);
-            foreach ($movies as $movie) {
-                foreach ($movie->genres as $genre) {
-                    if ($genre->name == $request->genre) $genres->push($movie);
-                }
-            }
-            return $genres;
-        } else return response(Movie::orderBy('release_date', 'asc')->get());
+        return response(Movie::orderBy('release_date', 'asc')->get());
+    }
+
+    public function trailers($id)
+    {
+        $trailers = Trailer::where('movie_id', $id)->get();
+        return response($trailers);
     }
 
     public function genres($id)

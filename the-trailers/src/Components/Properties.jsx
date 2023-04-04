@@ -3,6 +3,7 @@ import { SelectedMovieContext } from "../Contexts/SelectedMovieContext";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import TabButton from "./TabButton";
 import Trailers from "./Trailers";
+import Details from "./Details";
 
 export default function Properties() {
   const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
@@ -13,7 +14,7 @@ export default function Properties() {
       case 0:
         return <Trailers tab={tab} />;
       case 1:
-        return "1";
+        return <Details tab={tab} />;
       case 2:
         return "2";
       case 3:
