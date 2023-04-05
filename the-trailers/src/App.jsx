@@ -10,8 +10,8 @@ export default function App() {
   })
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/movies" element={<Movies />} />
+      <Route path="/dashboard" element={<Home />} />
+      <Route path="/dashboard/movies" element={<Movies />} />
     </Routes>
   );
 }

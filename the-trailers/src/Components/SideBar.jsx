@@ -15,10 +15,10 @@ export default function SideBar() {
       <div className="border-b-2 p-3 border-neutral-800 flex justify-center">
         <Logo />
       </div>
-      <SideBarLink href={"/"}>
+      <SideBarLink href={"/dashboard"}>
         <HomeIcon className="w-6 h-6" /> Home
       </SideBarLink>
-      <SideBarLink href={"/movies"}>
+      <SideBarLink href={"/dashboard/movies"}>
         <FilmIcon className="w-6 h-6" />
         Movies
       </SideBarLink>
