@@ -4,7 +4,7 @@ import axios from "axios";
 import { PencilIcon, TrashIcon } from "@heroicons/react/24/solid";
 import YoutubeFrame from "./YoutubeFrame";
 
-export default function TrailerList({ tab }) {
+export default function Trailers({ tab }) {
   const [trailers, setTrailers] = useState([]);
   const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
 

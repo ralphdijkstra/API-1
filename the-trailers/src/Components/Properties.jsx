@@ -12,7 +12,7 @@ export default function Properties() {
   const selectedTab = () => {
     switch (tab) {
       case 0:
-        return <TrailerList tab={tab} />;
+        return <Trailers tab={tab} />;
       case 1:
         return <Details tab={tab} />;
       case 2:
