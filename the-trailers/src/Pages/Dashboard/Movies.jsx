@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import DashboardLayout from "../Layouts/DashboardLayout";
-import Panel from "../Components/Panel";
-import { SelectedMovieContext } from "../Contexts/SelectedMovieContext";
-import Properties from "../Components/Properties";
-import Genres from "../Components/Genres";
+import DashboardLayout from "../../Layouts/DashboardLayout";
+import Panel from "../../Components/Panel";
+import { SelectedMovieContext } from "../../Contexts/SelectedMovieContext";
+import Properties from "../../Components/Properties";
+import Genres from "../../Components/Genres";
 import { FunnelIcon } from "@heroicons/react/24/solid";
 
 export default function Movies() {
