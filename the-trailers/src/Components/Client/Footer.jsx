@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
-    <footer class="hidden lg:flex w-full py-[3rem] mt-8 transition-all duration-300 ease-in-out">
-      <div class="w-full">
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+    <footer className="hidden lg:flex w-full px-8 lg:px-[10rem] py-[3rem] mt-8 transition-all duration-300 ease-in-out">
+      <div className="w-full">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div>
             <svg
-              class="fill-white h-[3rem]"
+              className="fill-white h-[3rem]"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 730.07 312.92"
             >
@@ -25,15 +25,20 @@ export default function Footer() {
                 </g>
               </g>
             </svg>
-            <p class="max-w-xs mt-4 text-sm text-gray-500">
+            <p className="max-w-xs mt-4 text-sm text-gray-500">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
               accusantium.
             </p>
-            <div class="flex mt-8 space-x-6 text-gray-600">
-              <a class="hover:opacity-75" href target="_blank" rel="noreferrer">
-                <span class="sr-only"> Instagram </span>
+            <div className="flex mt-8 space-x-6 text-gray-600">
+              <a
+                className="hover:opacity-75"
+                href
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="sr-only"> Instagram </span>
                 <svg
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -45,10 +50,15 @@ export default function Footer() {
                   />
                 </svg>
               </a>
-              <a class="hover:opacity-75" href target="_blank" rel="noreferrer">
-                <span class="sr-only"> Twitter </span>
+              <a
+                className="hover:opacity-75"
+                href
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="sr-only"> Twitter </span>
                 <svg
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -56,10 +66,15 @@ export default function Footer() {
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
               </a>
-              <a class="hover:opacity-75" href target="_blank" rel="noreferrer">
-                <span class="sr-only"> GitHub </span>
+              <a
+                className="hover:opacity-75"
+                href
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="sr-only"> GitHub </span>
                 <svg
-                  class="w-6 h-6"
+                  className="w-6 h-6"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -73,86 +88,86 @@ export default function Footer() {
               </a>
             </div>
           </div>
-          <div class="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 lg:col-span-2 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <p class="font-medium">Company</p>
-              <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                <a class="hover:opacity-75" href>
+              <p className="font-medium">Company</p>
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <a className="hover:opacity-75" href>
                   {" "}
                   About{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Meet the Team{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   History{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Careers{" "}
                 </a>
               </nav>
             </div>
             <div>
-              <p class="font-medium">Services</p>
-              <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                <a class="hover:opacity-75" href>
+              <p className="font-medium">Services</p>
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <a className="hover:opacity-75" href>
                   {" "}
                   1on1 Coaching{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Company Review{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Accounts Review{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   HR Consulting{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   SEO Optimisation{" "}
                 </a>
               </nav>
             </div>
             <div>
-              <p class="font-medium">Helpful Links</p>
-              <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                <a class="hover:opacity-75" href>
+              <p className="font-medium">Helpful Links</p>
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <a className="hover:opacity-75" href>
                   {" "}
                   Contact{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   FAQs{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Live Chat{" "}
                 </a>
               </nav>
             </div>
             <div>
-              <p class="font-medium">Legal</p>
-              <nav class="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
-                <a class="hover:opacity-75" href>
+              <p className="font-medium">Legal</p>
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-500">
+                <a className="hover:opacity-75" href>
                   {" "}
                   Privacy Policy{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Terms &amp; Conditions{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Returns Policy{" "}
                 </a>
-                <a class="hover:opacity-75" href>
+                <a className="hover:opacity-75" href>
                   {" "}
                   Accessibility{" "}
                 </a>
@@ -160,7 +175,7 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <p class="mt-8 text-xs text-gray-500">
+        <p className="mt-8 text-xs text-gray-500">
           © 2023 The Trailers, Ralph & OppoNoppo
         </p>
       </div>
