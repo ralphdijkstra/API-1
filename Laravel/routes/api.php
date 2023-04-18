@@ -27,5 +27,5 @@ Route::get('/movies/{id}/genres', [MovieController::class, 'genres']);
 
 Route::apiResource('trailers', TrailerController::class);
 
-// Route::apiResource('genres', GenreController::class);
+Route::apiResource('genres', GenreController::class);
 // Route::get('/genres/{id}/movies', [GenreController::class, 'movies']);

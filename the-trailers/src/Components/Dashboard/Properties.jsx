@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
-import { SelectedMovieContext } from "../Contexts/SelectedMovieContext";
+import { SelectedMovieContext } from "../../Contexts/SelectedMovieContext";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import TabButton from "./TabButton";
-import Trailers from "./Trailers";
-import Details from "./Details";
+import { TabButton, Trailers, Details } from "../Dashboard"
 
 export default function Properties() {
   const { selectedMovie, setSelectedMovie } = useContext(SelectedMovieContext);
