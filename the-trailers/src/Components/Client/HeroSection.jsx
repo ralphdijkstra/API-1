@@ -12,6 +12,9 @@ export default function HeroSection({id}) {
       for (var i=0; i<response2.data.length; i++) {
         if (response2.data[i]["type"].match("Official Trailer")) {
           setYtId(response2.data[i]["url"])
+          break
+        } else {
+          setYtId(response2.data[(response2.data.length - 1)]["url"])
         };
       }
     }
