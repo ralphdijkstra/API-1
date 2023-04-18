@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import Logo from "../../Assets/Logo";
+import Logo from "../../assets/Logo";
 import { Bars4Icon, MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 
 export default function Navbar() {
   return (
-    <nav class="w-full flex flex-row justify-between md:grid md:grid-cols-3 place-content-stretch h-[3rem]">
+    <nav class="w-full flex flex-row justify-between md:grid md:grid-cols-3 place-content-stretch max-h-[3rem]">
       <a href="/home" class="">
-        <Logo/>
+        <Logo classNames="h-[3rem]"/>
       </a>
       <div class="hidden text-xl items-center md:flex justify-center gap-[3rem] transition-all duration-300 ease-in-out">
           <Link to="/movies">Movies</Link>

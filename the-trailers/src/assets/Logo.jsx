@@ -1,8 +1,9 @@
-export default function Logo() {
+export default function Logo({classNames = ''}) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 730.07 312.92"
+            className={classNames}
             fill="white">
             <g id="Layer_2" data-name="Layer 2">
                 <g id="Layer_1-2" data-name="Layer 1">

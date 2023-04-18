@@ -1,10 +1,28 @@
-import placeholder from "../../Assets/placeholder.png";
-export default function HeroSection() {
+import axios from "axios";
+import { useEffect, useState } from "react";
+
+export default function HeroSection({id}) {
+  const [ytId, setYtId] = useState([]);
+  useEffect(() => {
+    const getTrailer = async () => {
+      const response2 = await axios
+        .get(`http://185.228.81.212:8081/api/movies/${id}/trailers`)
+        .catch(function (error) {console.log(error) })
+
+      for (var i=0; i<response2.data.length; i++) {
+        if (response2.data[i]["type"].match("Official Trailer")) {
+          setYtId(response2.data[i]["url"])
+        };
+      }
+    }
+    getTrailer()
+  },[id])
+
   return (
     <div
       className="h-[100vh] absolute top-0 w-full"
       style={{
-        backgroundImage: `url(${placeholder})`,
+        backgroundImage: `url(https://img.youtube.com/vi/${ytId}/maxresdefault.jpg)`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
       }}
