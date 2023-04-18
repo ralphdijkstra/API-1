@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { SelectedMovieContext } from "../Contexts/SelectedMovieContext";
+import { SelectedMovieContext } from "../../Contexts/SelectedMovieContext";
 import axios from "axios";
 
 export default function Details({ tab }) {

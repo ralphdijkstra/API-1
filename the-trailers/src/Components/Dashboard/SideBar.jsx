@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../Assets/Logo";
+import Logo from "../../Assets/Logo";
 import SideBarLink from "./SideBarLink";
 import {
   FilmIcon,
