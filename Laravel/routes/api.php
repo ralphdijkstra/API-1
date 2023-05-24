@@ -23,9 +23,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResource('movies', MovieController::class);
 Route::get('/movies/{id}/trailers', [MovieController::class, 'trailers']);
-Route::get('/movies/{id}/genres', [MovieController::class, 'genres']);
 
 Route::apiResource('trailers', TrailerController::class);
 
-Route::apiResource('genres', GenreController::class);
+// Route::apiResource('genres', GenreController::class);
 // Route::get('/genres/{id}/movies', [GenreController::class, 'movies']);
+// Route::get('/movies/{id}/genres', [MovieController::class, 'genres']);
